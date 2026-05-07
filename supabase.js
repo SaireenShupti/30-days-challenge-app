@@ -4,8 +4,8 @@
 // for progress data — only sessionStorage for the "viewing as" UI choice.
 
 (function (global) {
-  const SUPABASE_URL = '';
-  const SUPABASE_ANON_KEY = '';
+  const SUPABASE_URL = 'https://wqqeixsbecjfbenljlac.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndxcWVpeHNiZWNqZmJlbmxqbGFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyODMxNTYsImV4cCI6MjA5Mjg1OTE1Nn0.vyCVhom0lu4bzMnF8kMyPK5huMGVffYCxORDyIPJ7p8';
 
   const isLive = SUPABASE_URL && SUPABASE_ANON_KEY;
 
