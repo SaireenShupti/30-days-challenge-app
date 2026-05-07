@@ -9,11 +9,25 @@
 create table if not exists challenges (
   id              uuid primary key default gen_random_uuid(),
   name            text not null default '30 Days Together',
-  start_date      date not null default current_date,
+  start_date      date,                       -- null until set in onboarding
   total_days      int  not null default 30,
   season          int  not null default 1,
+  season_name     text not null default 'A quest for two',
   created_at      timestamptz not null default now()
 );
+
+-- Per-day editable meal slots per member (breakfast/lunch/dinner/snack)
+create table if not exists meals (
+  id              uuid primary key default gen_random_uuid(),
+  member_id       uuid not null references members(id) on delete cascade,
+  day             int  not null check (day between 1 and 60),
+  slot            text not null,              -- 'breakfast' | 'lunch' | 'dinner' | 'snack'
+  label           text not null,
+  done            boolean not null default false,
+  position        int  not null default 0,
+  created_at      timestamptz not null default now()
+);
+create index if not exists meals_member_day_idx on meals(member_id, day);
 
 -- Saireen and Kaisu — two members per challenge
 create table if not exists members (
@@ -94,18 +108,21 @@ alter table members    enable row level security;
 alter table tasks      enable row level security;
 alter table checkins   enable row level security;
 alter table nudges     enable row level security;
+alter table meals      enable row level security;
 
 drop policy if exists "open" on challenges;
 drop policy if exists "open" on members;
 drop policy if exists "open" on tasks;
 drop policy if exists "open" on checkins;
 drop policy if exists "open" on nudges;
+drop policy if exists "open" on meals;
 
 create policy "open" on challenges for all using (true) with check (true);
 create policy "open" on members    for all using (true) with check (true);
 create policy "open" on tasks      for all using (true) with check (true);
 create policy "open" on checkins   for all using (true) with check (true);
 create policy "open" on nudges     for all using (true) with check (true);
+create policy "open" on meals      for all using (true) with check (true);
 
 -- =========================================================
 -- 4. Seed: one challenge + two members

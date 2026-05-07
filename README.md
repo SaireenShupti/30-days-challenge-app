@@ -70,7 +70,23 @@ npx vercel --prod
 - **Challenge length:** `update challenges set total_days = 60`.
 - **Pastel palette:** tweak the CSS custom properties at the top of `styles.css`.
 
-## 6 · Roadmap ideas
+## 6 · Tweaks panel
+
+Tap the ⚙︎ button (bottom-right) to open Tweaks. From there you can:
+- Switch theme (gamified / soft / minimal)
+- Pick an accent color (swatches or full picker)
+- **Rename both players** — so any two friends can use this app, not just Saireen & Kaisu
+- Switch which player you're viewing as
+- Jump to any day (1–30) for preview
+- Adjust confetti intensity
+- Change challenge start date
+- Reset all progress
+
+## 7 · Meals
+
+Each player has 4 editable meal slots per day (breakfast, lunch, dinner, snack), pre-seeded with sensible defaults. Tap to mark eaten, type to rename, × to remove, or add new items per slot. Meals show on Today and inside Check-in for any day.
+
+## 8 · Roadmap ideas
 
 - Realtime updates via `supabase.channel(...).on('postgres_changes', ...)`
 - Push notifications for nudges (Web Push)
