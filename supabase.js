@@ -10,11 +10,11 @@
   const isLive = SUPABASE_URL && SUPABASE_ANON_KEY;
 
   async function rest(path, opts = {}) {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    const res = await fetch(`${https://wqqeixsbecjfbenljlac.supabase.co}/rest/v1/${path}`, {
       ...opts,
       headers: {
         'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Authorization': `Bearer ${eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndxcWVpeHNiZWNqZmJlbmxqbGFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyODMxNTYsImV4cCI6MjA5Mjg1OTE1Nn0.vyCVhom0lu4bzMnF8kMyPK5huMGVffYCxORDyIPJ7p8}`,
         'Content-Type': 'application/json',
         'Prefer': opts.prefer || 'return=representation',
         ...(opts.headers || {}),
